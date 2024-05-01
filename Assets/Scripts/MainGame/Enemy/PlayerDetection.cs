@@ -6,12 +6,13 @@ public class PlayerDetection : MonoBehaviour
     
     public Vector2 DirectionToPlayer { get; private set; }
 
-    [SerializeField] private float playerDistance;
+    [SerializeField] private float playerDetectionDistance;
     private Transform player;
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerMovement>().transform;
+        SetRandomSpeed();
     }
     
     void Update()
@@ -19,7 +20,7 @@ public class PlayerDetection : MonoBehaviour
         Vector2 enemyToPlayerVector = player.position - transform.position;
         DirectionToPlayer = enemyToPlayerVector.normalized;
 
-        if (enemyToPlayerVector.magnitude <= playerDistance )
+        if (enemyToPlayerVector.magnitude <= playerDetectionDistance)
         {
             playerDetected = true;
         }
@@ -27,5 +28,10 @@ public class PlayerDetection : MonoBehaviour
         {
             playerDetected = false;
         }
+    }
+
+    private void SetRandomSpeed()
+    {
+        playerDetectionDistance = Random.Range(5, 8);
     }
 }

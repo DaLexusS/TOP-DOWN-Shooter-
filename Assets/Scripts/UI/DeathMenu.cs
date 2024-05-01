@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class DeathMenu : MonoBehaviour
 {
@@ -15,11 +10,15 @@ public class DeathMenu : MonoBehaviour
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI bestScoreText;
 
-    void Start()
+    void Awake()
     {
         scoreCode = _player.GetComponent<Score>();
         scoreText = deathUi.transform.Find("Score").GetComponent<TextMeshProUGUI>();
         bestScoreText = deathUi.transform.Find("BestScore").GetComponent<TextMeshProUGUI>();
+    }
+
+    void Start()
+    {
         deathUi.SetActive(false);
     }
 

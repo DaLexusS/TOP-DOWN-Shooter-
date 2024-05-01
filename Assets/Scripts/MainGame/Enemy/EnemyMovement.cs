@@ -18,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
         playerDetection = GetComponent<PlayerDetection>();
         targetDirection = transform.up;
         _camera = Camera.main;
+        SetRandomSpeed();
     }
 
     private void FixedUpdate()
@@ -80,8 +81,14 @@ public class EnemyMovement : MonoBehaviour
         _rigidbody.SetRotation(rotation);
     }
 
+    private void SetRandomSpeed()
+    {
+        speed = Random.Range(1, 3);
+    }
+
     private void SetVelocity()
     {
         _rigidbody.velocity = transform.up * speed;
     }
+
 }

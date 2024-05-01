@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (timeUntilNextSpawn <= 0)
         {
+
             GameObject selectedZombie = GetRandomSprite();
             Instantiate(selectedZombie, transform.position, Quaternion.identity, enemyFolder.transform);
 

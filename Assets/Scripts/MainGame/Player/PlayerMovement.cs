@@ -29,10 +29,9 @@ public class PlayerMovement : MonoBehaviour
         RotateInDirectionOfMouse();
     }
 
-    private void OnMove(InputValue inputValue)
+    private void OnMove(InputValue inputValue) // It is being called form input package!!!
     {
         movementInput = inputValue.Get<Vector2>(); // Gets vector of the pressed keys even if it's both a/w
-
     }
 
     private void OffScreenWalk()

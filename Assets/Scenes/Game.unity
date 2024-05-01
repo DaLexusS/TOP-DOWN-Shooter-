@@ -3058,6 +3058,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3918283487384856356, guid: 4980594cf9d1c6d48b6fb0532168795e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3918283487384856356, guid: 4980594cf9d1c6d48b6fb0532168795e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3918283487384856356, guid: 4980594cf9d1c6d48b6fb0532168795e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3918283487384856356, guid: 4980594cf9d1c6d48b6fb0532168795e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4852349224335406399, guid: 4980594cf9d1c6d48b6fb0532168795e, type: 3}
       propertyPath: OnDied.m_PersistentCalls.m_Calls.Array.size
       value: 4

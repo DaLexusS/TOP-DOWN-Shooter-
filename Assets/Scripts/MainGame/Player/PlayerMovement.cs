@@ -1,27 +1,34 @@
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float rotateSpeed = 1.0f;
     [SerializeField] private float screenBorder;
 
     private Rigidbody2D _rigidbody;
     private Vector2 movementInput;
     private Camera _camera;
+    private Health _health;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _health = GetComponent<Health>();
         _camera = Camera.main;
     }
 
     private void FixedUpdate() // Instead of using update * delta
     {
+        if (!_health.isAlive)
+        {
+            return;
+        }
         _rigidbody.velocity = movementInput * speed;
         OffScreenWalk();
-        RotateInDirectionOfInput();
+        RotateInDirectionOfMouse();
     }
 
     private void OnMove(InputValue inputValue)
@@ -46,15 +53,13 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         }
     }
-
-    private void RotateInDirectionOfInput()
+    private void RotateInDirectionOfMouse()
     {
-        if (movementInput != Vector2.zero) 
-        { 
-            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, movementInput);
-            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
-
-            _rigidbody.MoveRotation(rotation);
-        }
+        var mouse_pos = Input.mousePosition;
+        var object_pos = Camera.main.WorldToScreenPoint(_rigidbody.position);
+        mouse_pos.x = mouse_pos.x - object_pos.x;
+        mouse_pos.y = mouse_pos.y - object_pos.y;
+        float angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 }

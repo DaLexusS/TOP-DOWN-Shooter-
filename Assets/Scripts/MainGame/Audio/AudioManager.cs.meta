@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: a1ed2d6f8f05fdf44b3aab868872d45f
+guid: 1168c95bdeb232a4ab0b61adf7536ee4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - player: {fileID: 2699258735891746575, guid: 4980594cf9d1c6d48b6fb0532168795e, type: 3}
-  - scoreText: {instanceID: 0}
+  - _player: {fileID: 5233533364669987477, guid: c090b9f4d5f86b64f95820f9581e2862, type: 3}
+  - backgroundMusic: {instanceID: 0}
+  - pistolShot: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

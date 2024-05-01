@@ -9,10 +9,19 @@ public class PlayerShot : MonoBehaviour
     [SerializeField] private float shotCoolDown;
     [SerializeField] private GameObject projectileFolder;
     [SerializeField] private GameObject player;
+    [SerializeField] public string weaponType = "Pistol";
+    [SerializeField] Camera cam;
+    
 
     private float lastShot;
     private bool fireContinously;
     private bool fireSingle;
+    private AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = cam.GetComponent<AudioManager>();
+    }
 
     void Update()
     {
@@ -34,8 +43,8 @@ public class PlayerShot : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, gunOffset.position, transform.rotation, projectileFolder.transform);
         Rigidbody2D _rigidbody = bullet.GetComponent<Rigidbody2D>();
-
         _rigidbody.velocity = bulletSpeed * transform.up;
+        audioManager.PlaySound(weaponType);
     }
     private void OnFire(InputValue inputValue)
     {

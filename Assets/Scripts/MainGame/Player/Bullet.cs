@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
 {
     private Camera _camera;
     private GameObject _player;
+    private GameObject particleFolder;
+    [SerializeField] public ParticleSystem deathParticle = default;
 
     private void Awake()
     {
@@ -15,6 +17,7 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        particleFolder = GameObject.Find("Particles");
     }
 
     private void Update()
@@ -29,8 +32,10 @@ public class Bullet : MonoBehaviour
         if (collision.GetComponent<EnemyMovement>()) // Can use tag enemy instead
         {
             Score score = _player.GetComponent<Score>();
+            ParticleSystem particleClone = Instantiate(deathParticle, collision.transform.position, collision.transform.rotation, particleFolder.transform);
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            deathParticle.Play();
             score.AddScore(15);
         }
     }

@@ -10,6 +10,7 @@ public class PlayerShot : MonoBehaviour
     [SerializeField] private GameObject projectileFolder;
     [SerializeField] private GameObject player;
     [SerializeField] public string weaponType = "Pistol";
+    [SerializeField] private ParticleSystem shotParticles = default;
     [SerializeField] Camera cam;
     
 
@@ -45,6 +46,8 @@ public class PlayerShot : MonoBehaviour
         Rigidbody2D _rigidbody = bullet.GetComponent<Rigidbody2D>();
         _rigidbody.velocity = bulletSpeed * transform.up;
         audioManager.PlaySound(weaponType);
+        shotParticles.transform.position = gunOffset.position;
+        shotParticles.Play();
     }
     private void OnFire(InputValue inputValue)
     {

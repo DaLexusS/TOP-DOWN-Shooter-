@@ -51,9 +51,15 @@ TagManager:
   - name: Bullet
     uniqueID: 3467072507
     locked: 0
+  - name: BloodParticles
+    uniqueID: 974933311
+    locked: 0
   - name: Player
     uniqueID: 1424185287
     locked: 0
   - name: Enemy
     uniqueID: 3052191913
+    locked: 0
+  - name: Particles
+    uniqueID: 2750872043
     locked: 0

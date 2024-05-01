@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4094437517635179559, guid: 28648b9a487c68f4e80a7a33ceaf04de, type: 3}
-  enemyFolder: {fileID: 2760206629086386762, guid: 41db9840d8d3cd7458e221fa6c5e96d5, type: 3}
+  enemyFolder: {fileID: 0}
   zombieSprites:
   - {fileID: 4094437517635179559, guid: 28648b9a487c68f4e80a7a33ceaf04de, type: 3}
   - {fileID: 4094437517635179559, guid: 9ef7cc20389bf0a4ca3ddb04f4f0332b, type: 3}
@@ -54,3 +54,4 @@ MonoBehaviour:
   minimumSpawnTime: 2
   maximumSpawnTime: 5
   timeUntilNextSpawn: 0
+  enemyLimit: 30

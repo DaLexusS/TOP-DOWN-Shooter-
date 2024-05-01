@@ -13,9 +13,10 @@ public class EnemyAttack : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && Time.time >= timeCheck)
         {
             var healthController = collision.gameObject.GetComponent<Health>();
-            if (healthController != null)
+            var scoreScript = collision.gameObject.GetComponent<Score>();
+            if (healthController != null && scoreScript != null)
             {
-                healthController.TakeDamage(damage);
+                healthController.TakeDamage(Mathf.Floor(damage * scoreScript.difficultyMultiplier));
             }
 
             timeCheck = Time.time + attackCooldown;

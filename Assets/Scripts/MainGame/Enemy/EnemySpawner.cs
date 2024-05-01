@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float minimumSpawnTime;
     [SerializeField] private float maximumSpawnTime;
     [SerializeField] private float timeUntilNextSpawn;
+    [SerializeField] int enemyLimit;
 
     private void Awake()
     {
@@ -19,9 +20,8 @@ public class EnemySpawner : MonoBehaviour
     {
         timeUntilNextSpawn -= Time.deltaTime;
 
-        if (timeUntilNextSpawn <= 0)
+        if (timeUntilNextSpawn <= 0 && CheckEnemyCount() < enemyLimit)
         {
-
             GameObject selectedZombie = GetRandomSprite();
             Instantiate(selectedZombie, transform.position, Quaternion.identity, enemyFolder.transform);
 
@@ -37,5 +37,21 @@ public class EnemySpawner : MonoBehaviour
     private void SetTimeUntilSpawn()
     {
         timeUntilNextSpawn = Random.Range(minimumSpawnTime, maximumSpawnTime);
+    }
+
+    private int CheckEnemyCount()
+    {
+        int enemyCount = 0;
+        EnemyAttack[] enemies = enemyFolder.GetComponentsInChildren<EnemyAttack>();
+
+        foreach (EnemyAttack enemy in enemies)
+        {
+            if (enemy.gameObject.activeSelf)
+            {
+                enemyCount++;
+            }
+        }
+
+        return enemyCount;
     }
 }
